@@ -13,43 +13,29 @@
   };
 
 
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager }@inputs: {
-    nixosConfigurations = {
-          tizil = nixpkgs-stable.lib.nixosSystem { 
-	      system = "x86_64-linux";
-	      specialArgs = { inherit inputs; };
+  outputs = { self, nixpkgs, nixpkgs-stable, home-manager }@inputs: 
+     let
+      
+         homeManagerModules = [
+             home-manager.nixosModules.home-manager
+             {
+                 home-manager.useGlobalPkgs = true;
+                 home-manager.useUserPackages = true;
+                 home-manager.extraSpecialArgs = { inherit inputs; };
+                 home-manager.users.lemos = import ./tizil/home/lemos.nix;
+             }
+         ];
+         mkNixosSystem = configurationNix: nixpkgs-stable.lib.nixosSystem {
+           system = "x86_64-linux";
+           specialArgs = { inherit inputs; };
+           modules = [ configurationNix ] ++ homeManagerModules;
+         };
 
-	      modules = [
-	          ./tizil/configuration.nix
-		  home-manager.nixosModules.home-manager
-
-		  {
-		      home-manager.useGlobalPkgs = true;
-		      home-manager.useUserPackages = true;
-		      home-manager.extraSpecialArgs = { inherit inputs; };
-		      home-manager.users.lemos = import ./tizil/home/lemos.nix;
-		  }
-	      ];
-	  };
-	  tabosa = nixpkgs-stable.lib.nixosSystem {
-	     system = "x86_64-linux";
-
-	     specialArgs = { inherit inputs; }; 
-
-	     modules = [ 
-	         ./tabosa/configuration.nix 
-
-		 home-manager.nixosModules.home-manager 
-
-		 {
-		    home-manager.useGlobalPkgs = true; 
-		    home-manager.useUserPackages = true; 
-		    home-manager.extraSpecialArgs = { inherit inputs; };
-		    home-manager.users.lemos = import ./tizil/home/lemos.nix; 
-		 }
-	     ];
-	  };
-    };
-  };
+     in {
+       nixosConfigurations = {
+         tizil  = mkNixosSystem ./tizil/configuration.nix;
+         tabosa = mkNixosSystem ./tabosa/configuration.nix;
+       };
+     };
 
 }
