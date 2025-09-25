@@ -8,8 +8,14 @@
 
      home-manager = { 
          url = "github:nix-community/home-manager/release-25.05";
-	 inputs.nixpkgs.follows = "nixpkgs-stable";
+	       inputs.nixpkgs.follows = "nixpkgs-stable";
      };
+
+     #near future!
+     system-manager = {
+         url = "github:numtide/system-manager";
+         inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
 
@@ -36,6 +42,19 @@
          tizil  = mkNixosSystem ./tizil/configuration.nix;
          tabosa = mkNixosSystem ./tabosa/configuration.nix;
        };
+       homeConfigurations = {
+         # Use a descriptive name like "username@hostname"
+         "lemos@coxinha" = home-manager.lib.homeManagerConfiguration {
+           pkgs = nixpkgs-stable.legacyPackages."x86_64-linux";
+           extraSpecialArgs = { inherit inputs; };
+           # You can reuse your existing home.nix!
+           modules = [
+             ./tizil/home/lemos.nix
+           ];
+         };
+       };
+
      };
+  
 
 }
