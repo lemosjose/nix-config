@@ -19,7 +19,7 @@
   };
 
 
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager }@inputs: 
+  outputs = { system-manager, self, nixpkgs, nixpkgs-stable, home-manager }@inputs: 
      let
       
          homeManagerModules = [

@@ -30,9 +30,7 @@
         enterDev = "nix-shell nix/shell.nix";
         update = "sudo nixos-rebuild switch --upgrade";
         clean = "sudo nix-collect-garbage -d";
-        # Tip: 'zoxide' automatically replaces 'cd'. You don't need this alias,
-        # and it can sometimes interfere. It's safe to remove.
-        # cd = "z";
+        cd = "z";
       };
       history = {
         path = "/home/lemos/.zsh/history";
@@ -57,7 +55,6 @@
       calibre
       gnome-pomodoro
       google-chrome
-      telegram-desktop
       thunderbird
       kdePackages.ark
       mpv

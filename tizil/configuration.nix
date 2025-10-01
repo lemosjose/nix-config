@@ -14,7 +14,7 @@
 
       graphics = {
           enable = true;
-	  enable32Bit = true;
+	        enable32Bit = true;
       };
   };
 
@@ -29,7 +29,7 @@
   boot = {
      loader.systemd-boot = { 
           enable = true; 
-	  memtest86.enable = true;
+	        memtest86.enable = true;
      };
 
 
@@ -39,10 +39,10 @@
 
      kernelParams = [
          "pcie_aspm=off"
-	 "amdgpu.ppfeaturemask=0xffffffff"
-	 "amdgpu.gpu_recovery=1"
-	 "quiet"
-	 "splash"
+	       "amdgpu.ppfeaturemask=0xffffffff"
+	       "amdgpu.gpu_recovery=1"
+	       "quiet"
+	       "splash"
      ];
 
      initrd.kernelModules = [ "amdgpu" ];
@@ -74,7 +74,7 @@
 
       kdeconnect = { 
          enable = true; 
-	 package = pkgs.gnomeExtensions.gsconnect;
+	       package = pkgs.gnomeExtensions.gsconnect;
       };
   };
 
@@ -98,20 +98,20 @@
   services = {
       udev = {
           enable = true; 
-	  packages = with pkgs; [ android-udev-rules gnome-settings-daemon];
+	        packages = with pkgs; [ android-udev-rules gnome-settings-daemon];
       };
 
       ollama = {
           enable = true;
-	  acceleration = "rocm";
-	  #i prefer to keep it here just remember the value without running nix-shell for rocmPackages
-	  environmentVariables = { 
-	      HCC_AMDGPU_TARGET = "gfx1032";
-	      HSA_OVERRIDE_GFX_VERSION= "10.3.0";
-	      HIP_VISIBLE_DEVICES = "0";
-	  };
+	        acceleration = "rocm";
+	        #i prefer to keep it here just remember the value without running nix-shell for rocmPackages
+	        environmentVariables = { 
+	          HCC_AMDGPU_TARGET = "gfx1032";
+	          HSA_OVERRIDE_GFX_VERSION= "10.3.0";
+	          HIP_VISIBLE_DEVICES = "0";
+	        };
 
-	  loadModels = [ "deepseek-r1:latest" "llama3.1:latest" ];
+	        loadModels = [ "deepseek-r1:latest" "llama3.1:latest" ];
       };
 
       gvfs.enable = true; 
@@ -130,14 +130,14 @@
           enable = true;
           wireplumber.enable = true; 
 
-	  alsa.enable = true; 
-	  alsa.support32Bit = true; 
-	  pulse.enable = true;
+	        alsa.enable = true; 
+	        alsa.support32Bit = true; 
+	        pulse.enable = true;
       };
 
       xserver = { 
          enable = true; 
-	 videoDrivers = [ "amdgpu" ];
+	       videoDrivers = [ "amdgpu" ];
       };
 
   };
@@ -194,15 +194,13 @@
       networkmanager.enable = true;
       firewall = { 
          enable = true;
-	 allowedTCPPorts = [ 8080
-	                     9090
+	       allowedTCPPorts = [
+                             8080
+	                           9090
                              1234
                            ];
      };
   };
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
   system.stateVersion = "23.11"; # Did you read the comment?
 
 }
