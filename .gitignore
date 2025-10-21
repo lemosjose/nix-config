@@ -1,0 +1,9 @@
+#flakes don't track files that are not added in git 
+
+#emacs.gitignore
+
+*~
+.DS_Store
+*~
+*#
+.#*
