@@ -25,9 +25,6 @@
         cd = "z";
         ls = "eza";
       };
-      history = {
-        path = "/home/lemos/.zsh/history";
-      };
       oh-my-zsh = {
         enable = true;
         plugins = ["git"];

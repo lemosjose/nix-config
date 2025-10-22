@@ -10,6 +10,12 @@
       enable = true; 
 	    package = pkgs.vscode.fhsWithPackages (ps: with ps; [ rustup zlib pkg-config ]);
     };
+
+    zsh = {
+      history = {
+        path = "/home/Joseph/.zsh/history";
+      };
+    };
   };
 
   

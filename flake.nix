@@ -46,5 +46,19 @@
         tizil  = mkNixosSystem ./hosts/tizil/configuration.nix mainHost;
         tabosa = mkNixosSystem ./hosts/tabosa/configuration.nix [];
       };
+
+      #For WSL2 and (maybe :^) ) other distros
+      homeConfigurations."lemos" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs-stable.legacyPackages."x86_64-linux";
+        extraSpecialArgs = { inherit inputs; };
+        modules = [
+          ./home/lemos.nix
+          {
+            home.username = "lemos";
+            home.homeDirectory = "/home/lemos";
+            nixpkgs.config.allowUnfree = true;
+          }
+        ];
+      };
     };
 }
