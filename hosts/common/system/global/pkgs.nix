@@ -1,0 +1,29 @@
+{
+  pkgs,
+  ...
+}: {
+environment.systemPackages = with pkgs; [
+  wget
+  eza
+  nodejs
+  gcc
+  ffmpeg-full
+  kexec-tools
+  distrobox
+  efibootmgr
+  podman-compose
+  texlive.combined.scheme-full
+  openvpn
+  libarchive
+  leiningen
+  mako
+  jdk21
+  neovim
+  which
+  rPackages.pkgconfig 
+  cairo 
+  android-tools
+  brightnessctl
+  nodePackages.typescript
+];
+}

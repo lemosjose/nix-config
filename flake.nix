@@ -9,56 +9,75 @@
       url = "github:nix-community/home-manager/release-25.05";
 	    inputs.nixpkgs.follows = "nixpkgs-stable";
     };
+
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
+
+    systems.url = "github:nix-systems/default-linux";
+
+    hardware.url = "github:nixos/nixos-hardware";
   };
 
 
-  outputs = { self, nixpkgs-stable, home-manager }@inputs: 
-    let
-      
-      homeManagerBase = {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        home-manager.extraSpecialArgs = { inherit inputs; };
-        home-manager.users.lemos = import ./home-configurations/lemos/lemos.nix;
-      };
-      
+  outputs = {
+    self,
+    nixpkgs-stable,
+    home-manager,
+    systems,
+    firefox-addons, 
+    hardware
+  } @ inputs: let
+    inherit (self) outputs;
+    lib = nixpkgs-stable.lib // home-manager.lib;
+    forEachSystem = f: lib.genAttrs (import systems) (system: f pkgsFor.${system});
+    pkgsFor = lib.genAttrs (import systems) (
+      system:
+      import nixpkgs-stable {
+        inherit system;
+        config.allowUnfree = true;
+      }
+    );
 
-      mainHost = {
-          home-manager.extraSpecialArgs = { inherit inputs; }; 
-          home-manager.users.Joseph = import ./home-configurations/Joseph/Work.nix;
-     };       
-     
-      
-      mkNixosSystem = configurationNix: extraModules:
-        nixpkgs-stable.lib.nixosSystem {             
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [
-            configurationNix
-            home-manager.nixosModules.home-manager
-            homeManagerBase
-            extraModules
-          ];
+  in{
+
+    inherit lib;
+
+    nixosConfigurations = {
+
+      #main desktop 
+      tizil = lib.nixosSystem {
+        modules = [./hosts/tizil];
+        specialArgs = {
+          inherit inputs outputs;
         };
-
-    in {
-      nixosConfigurations = {
-        tizil  = mkNixosSystem ./hosts/tizil/configuration.nix mainHost;
-        tabosa = mkNixosSystem ./hosts/tabosa/configuration.nix [];
       };
 
-      #For WSL2 and (maybe :^) ) other distros
-      homeConfigurations."lemos" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs-stable.legacyPackages."x86_64-linux";
-        extraSpecialArgs = { inherit inputs; };
-        modules = [
-          ./home/lemos.nix
-          {
-            home.username = "lemos";
-            home.homeDirectory = "/home/lemos";
-            nixpkgs.config.allowUnfree = true;
-          }
-        ];
+      #laptop (Samsung)
+      tabosa = lib.nixosSystem {
+        modules = [./hosts/tabosa];
+        specialArgs = {
+          inherit inputs outputs;
+        };
       };
     };
+
+    
+
+    
+    #For WSL2 and (maybe :^) ) other distros
+    homeConfigurations."lemos" = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs-stable.legacyPackages."x86_64-linux";
+      extraSpecialArgs = { inherit inputs; };
+      modules = [
+        ./home/lemos.nix
+        {
+          home.username = "lemos";
+          home.homeDirectory = "/home/lemos";
+          nixpkgs.config.allowUnfree = true;
+        }
+      ];
+    };
+  };
 }

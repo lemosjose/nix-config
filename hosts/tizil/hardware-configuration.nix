@@ -14,12 +14,12 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/bd056d7a-0445-4f1e-b367-3981786b1c47";
+    { device = "/dev/lemos/root";
       fsType = "ext4";
     };
 
   fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/96a57686-9299-4d81-bf0f-b98a92341851";
+    { device = "/dev/lemos/home";
       fsType = "ext4";
     };
 
@@ -34,7 +34,7 @@
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/42d85474-a5cf-4024-9612-9aaf5330fdf6"; }
+    [ { device = "/dev/lemos/swap "; }
     ];
 
   networking.useDHCP = lib.mkDefault true;
