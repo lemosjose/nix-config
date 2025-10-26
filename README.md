@@ -15,7 +15,7 @@ Tizil with Ery Soares
 
 ![tabosa](readme-assets/tabosa.jpg)
 
-Tabosa, features in the "Panelada" plot
+Tabosa, featured in the "Panelada" plot from the Show "Garras da Patrulha"
 
 ## Organization 
 

@@ -1,10 +1,13 @@
 { config ,
   pkgs,
   inputs, 
-  ...}: {
+  ...}:
+let
+  ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
+in{
 users.users.Joseph = {
   isNormalUser= true;
-  extraGroups = [
+  extraGroups = ifTheyExist [
     "adbusers"
     "wheel"
     "input"

@@ -17,7 +17,7 @@
   };
 
   #makes the backup suicidal while this things is only getting on my way
-  home-manager.backupFileExtension = "clyde";
+  home-manager.backupFileExtension = "chicopezao";
 
 
   nixpkgs = {

@@ -1,6 +1,11 @@
 {
+  pkgs,
+  ...
+}: {
   imports = [
     ../common
+
+    ../common/tabosa/plasma.nix
   ];
 
   programs = {

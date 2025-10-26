@@ -7,7 +7,6 @@
       mupdf
       discord
       calibre
-      kdePackages.okular
       vlc
       pavucontrol
       spotify

@@ -20,6 +20,8 @@
 
   boot.kernelParams = [ "quiet" "splash" ];
 
+  networking.networkmanager.wifi.powersave = true; 
+
   networking.hostName = "tabosa";
 
   powerManagement.powertop.enable = true;
@@ -28,6 +30,8 @@
     enable = true;
     powerOnBoot = true;
   };
+
+  users.defaultUserShell = pkgs.zsh;
 
   services.logind = {
     powerKey = "suspend";

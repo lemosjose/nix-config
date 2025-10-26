@@ -18,6 +18,14 @@
     systems.url = "github:nix-systems/default-linux";
 
     hardware.url = "github:nixos/nixos-hardware";
+
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+      inputs.home-manager.follows = "home-manager";
+    };
+
+    
   };
 
 
@@ -27,7 +35,8 @@
     home-manager,
     systems,
     firefox-addons, 
-    hardware
+    hardware,
+    plasma-manager,
   } @ inputs: let
     inherit (self) outputs;
     lib = nixpkgs-stable.lib // home-manager.lib;
