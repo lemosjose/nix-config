@@ -4,6 +4,7 @@
 }: {
   home.packages = with pkgs; [
       keepassxc
+    #do not remove, it works inside emacs 
       mupdf
       discord
       calibre
@@ -11,10 +12,8 @@
       pavucontrol
       spotify
       vivaldi
-      python3Full
       emacs-pgtk
       ghostty
       papers
-      gnome-tweaks
   ]; 
 }

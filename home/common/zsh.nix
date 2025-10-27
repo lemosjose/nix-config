@@ -1,4 +1,7 @@
 {
+  config,
+  ...
+}: {
 programs = {
   zoxide = {
     enable = true;
@@ -16,6 +19,10 @@ programs = {
       clean = "sudo nix-collect-garbage -d";
       cd = "z";
       ls = "eza";
+      vim = "nvim";
+      cobrinha = "nix-shell ${config.home.homeDirectory}/nix-config/shells/python.nix";
+      pato = "nix-shell ${config.home.homeDirectory}/nix-config/shells/fullstack.nix";
+      caixinha = "nix-shell ${config.home.homeDirectory}/nix-config/shells/haskell.nix";
     };
     oh-my-zsh = {
       enable = true;

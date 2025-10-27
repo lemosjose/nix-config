@@ -31,6 +31,8 @@ programs.firefox = {
       darkreader
       search-by-image
       dearrow
+      old-reddit-redirect
+      privacy-badger
     ];
     # >:) 
     extensions.force = true;
@@ -44,7 +46,7 @@ programs.firefox = {
 
       "beacon.enabled" = lock-false;
 
-      "browser.startup.homepage" = "https://start.duckduckgo.com";
+      "browser.startup.homepage" = "https://news.ycombinator.com/";
       "browser.search.separatePrivateDefault.ui.enabled" = lock-true;
       "browser.urlbar.update2.engineAliasRefresh" = lock-true;
       "browser.search.suggest.enabled" = lock-false;
@@ -192,7 +194,27 @@ programs.firefox = {
       "widget.use-xdg-desktop-portal.mime-handler" = 1;
     };
 
+  search.force = true;
+
+  search.default = "ecosia";
+
+  search.order = [ "ecosia" "ddg" ]; 
+
   search.engines = {
+    "ecosia" = {
+      definedAliases = ["@eco"];
+      urls = [
+        {
+          template = "https://www.ecosia.org/search";
+          params = [
+            {
+              name = "q";
+              value = "{searchTerms}";
+            }
+          ];
+        }
+      ];
+    };
     "Nix Packages" = {
       urls = [
         {
@@ -222,6 +244,8 @@ programs.firefox = {
       ];
     };
   };
+
+  
 }; 
 };
 }
