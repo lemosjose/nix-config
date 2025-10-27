@@ -53,15 +53,6 @@ dconf.settings = {
     switch-to-workspace-right = [ "<Control><Super>Right" ];
   };
 
-  "org/gnome/desktop/background" = {
-    color-shading-type = "solid";
-    picture-options = "zoom";
-    picture-uri = "file:///${config.home.homeDirectory}/Wallpaper/landscape";
-    picture-uri-dark = "file://${config.home.homeDirectory}/Wallpaper/landscape-dark";
-    primary-color = "#000000000000";
-    secondary-color = "#000000000000";
-  };
-
 };
 
 }
