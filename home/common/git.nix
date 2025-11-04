@@ -1,14 +1,12 @@
 {
-
 programs = {
   git = {
     enable = true;
-    userEmail = "devlemosjose@gmail.com";
-    userName = "voidjl";
-    extraConfig = {
+    settings = {
+      user.email = "devlemosjose@gmail.com";
+      user.name = "voidjl";
       init.defaultBranch = "master"; 
     };
   };
 };
-
 }

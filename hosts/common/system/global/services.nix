@@ -6,10 +6,7 @@ services = {
 
   avahi.enable = true; 
   
-  udev = {
-    enable = true; 
-	  packages = with pkgs; [ android-udev-rules gnome-settings-daemon];
-  };
+  udev.enable = true; 
 
   gvfs.enable = true; 
 
@@ -36,5 +33,4 @@ security = {
   polkit.enable = true;
   rtkit.enable = true;
 };
-
 }

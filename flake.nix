@@ -1,92 +1,89 @@
 {
-  description = "Simple nix configuration (do not overestimate me when it comes to nix!)";
+description = "Simple nix configuration (do not overestimate me when it comes to nix!)";
 
+inputs = {
 
-  inputs = {
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+  nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    home-manager = { 
-      url = "github:nix-community/home-manager/release-25.05";
-	    inputs.nixpkgs.follows = "nixpkgs-stable";
-    };
-
-    firefox-addons = {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
-    };
-
-    systems.url = "github:nix-systems/default-linux";
-
-    hardware.url = "github:nixos/nixos-hardware";
-
-    plasma-manager = {
-      url = "github:nix-community/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
-      inputs.home-manager.follows = "home-manager";
-    };
-
-    
+  home-manager = { 
+    url = "github:nix-community/home-manager";
+	  inputs.nixpkgs.follows = "nixpkgs";
   };
 
+  firefox-addons = {
+    url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
 
-  outputs = {
-    self,
-    nixpkgs-stable,
+  jovian = {
+    url = "github:Jovian-Experiments/Jovian-NixOS?shallow=true";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
+
+  systems.url = "github:nix-systems/default-linux";
+
+  hardware.url = "github:nixos/nixos-hardware";
+
+  plasma-manager = {
+    url = "github:nix-community/plasma-manager";
+    inputs.nixpkgs.follows = "nixpkgs";
+    inputs.home-manager.follows = "home-manager";
+  };
+};
+
+outputs = {
+  self,
+    nixpkgs,
     home-manager,
     systems,
     firefox-addons, 
     hardware,
+    jovian, 
     plasma-manager,
-  } @ inputs: let
-    inherit (self) outputs;
-    lib = nixpkgs-stable.lib // home-manager.lib;
-    forEachSystem = f: lib.genAttrs (import systems) (system: f pkgsFor.${system});
-    pkgsFor = lib.genAttrs (import systems) (
-      system:
-      import nixpkgs-stable {
-        inherit system;
-        config.allowUnfree = true;
-      }
-    );
+} @ inputs: let
+  inherit (self) outputs;
+  lib = nixpkgs.lib // home-manager.lib;
+  forEachSystem = f: lib.genAttrs (import systems) (system: f pkgsFor.${system});
+  pkgsFor = lib.genAttrs (import systems) (
+    system:
+    import nixpkgs {
+      inherit system;
+      config.allowUnfree = true; 
+    }
+  );
 
-  in{
+in{
+  inherit lib;
 
-    inherit lib;
-
-    nixosConfigurations = {
-
-      #main desktop 
-      tizil = lib.nixosSystem {
-        modules = [./hosts/tizil];
-        specialArgs = {
-          inherit inputs outputs;
-        };
-      };
-
-      #laptop (Samsung)
-      tabosa = lib.nixosSystem {
-        modules = [./hosts/tabosa];
-        specialArgs = {
-          inherit inputs outputs;
-        };
+  nixosConfigurations = {
+    #main desktop 
+    tizil = lib.nixosSystem {
+      modules = [./hosts/tizil];
+      specialArgs = {
+        inherit inputs outputs;
       };
     };
-
-    
-
-    
-    #For WSL2 and (maybe :^) ) other distros
-    homeConfigurations."lemos" = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs-stable.legacyPackages."x86_64-linux";
-      extraSpecialArgs = { inherit inputs; };
-      modules = [
-        ./home/lemos.nix
-        {
-          home.username = "lemos";
-          home.homeDirectory = "/home/lemos";
-          nixpkgs.config.allowUnfree = true;
-        }
-      ];
+    #laptop (Samsung)
+    tabosa = lib.nixosSystem {
+      modules = [./hosts/tabosa];
+      specialArgs = {
+        inherit inputs outputs;
+      };
     };
   };
+  
+  #For WSL2 and (maybe :^) ) other distros
+  homeConfigurations."lemos" = home-manager.lib.homeManagerConfiguration {
+    pkgs = nixpkgs.legacyPackages."x86_64-linux";
+    extraSpecialArgs = { inherit inputs; };
+    modules = [
+      ./home/lemos.nix
+      {
+        home.username = "lemos";
+        home.homeDirectory = "/home/lemos";
+        nixpkgs.config.allowUnfree = true;
+      }
+    ];
+  };
+};
 }

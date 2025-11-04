@@ -3,16 +3,16 @@
     "firefox-addons": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs-stable"
+          "nixpkgs"
         ]
       },
       "locked": {
         "dir": "pkgs/firefox-addons",
-        "lastModified": 1761478231,
-        "narHash": "sha256-a6ROM73M0TSrooI+8/UMj5KWKOdaDFTycVeo8XJ3dk4=",
+        "lastModified": 1762229017,
+        "narHash": "sha256-MbOdNKj9aoanoturpoUM2yx0r5/dSMz/Jm9bPg8HJNw=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "ae968708476302f8781fb5e245d53f112ed04111",
+        "rev": "0de5e9e965527818fd977a05435e131aa12b78fe",
         "type": "gitlab"
       },
       "original": {
@@ -24,11 +24,11 @@
     },
     "hardware": {
       "locked": {
-        "lastModified": 1760958188,
-        "narHash": "sha256-2m1S4jl+GEDtlt2QqeHil8Ny456dcGSKJAM7q3j/BFU=",
+        "lastModified": 1762267440,
+        "narHash": "sha256-WHjEJ80oYbWyNu0dxysBs5oMlBc5w7YYzL1/UPj4iGo=",
         "owner": "nixos",
         "repo": "nixos-hardware",
-        "rev": "d6645c340ef7d821602fd2cd199e8d1eed10afbc",
+        "rev": "2e85ae1b7030df39269d29118b1f74944d0c8f15",
         "type": "github"
       },
       "original": {
@@ -40,36 +40,78 @@
     "home-manager": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs-stable"
+          "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1758463745,
-        "narHash": "sha256-uhzsV0Q0I9j2y/rfweWeGif5AWe0MGrgZ/3TjpDYdGA=",
+        "lastModified": 1762296971,
+        "narHash": "sha256-Jyv3L5rrUYpecON+9zyFz2VqgTSTsIG35fXuCyuCQv0=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "3b955f5f0a942f9f60cdc9cacb7844335d0f21c3",
+        "rev": "34fe48801d2a5301b814eaa1efb496499d06cebc",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
-        "ref": "release-25.05",
         "repo": "home-manager",
         "type": "github"
       }
     },
-    "nixpkgs-stable": {
+    "jovian": {
+      "inputs": {
+        "nix-github-actions": "nix-github-actions",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
       "locked": {
-        "lastModified": 1761173472,
-        "narHash": "sha256-m9W0dYXflzeGgKNravKJvTMR4Qqa2MVD11AwlGMufeE=",
+        "lastModified": 1761748321,
+        "narHash": "sha256-hD5mVzmUeyVppjArdy2uVdQe/CQUR9i3WgZB05onE7A=",
+        "owner": "Jovian-Experiments",
+        "repo": "Jovian-NixOS",
+        "rev": "533db5857c9e00ca352558a928417116ee08a824",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Jovian-Experiments",
+        "repo": "Jovian-NixOS",
+        "type": "github"
+      }
+    },
+    "nix-github-actions": {
+      "inputs": {
+        "nixpkgs": [
+          "jovian",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1729697500,
+        "narHash": "sha256-VFTWrbzDlZyFHHb1AlKRiD/qqCJIripXKiCSFS8fAOY=",
+        "owner": "zhaofengli",
+        "repo": "nix-github-actions",
+        "rev": "e418aeb728b6aa5ca8c5c71974e7159c2df1d8cf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "zhaofengli",
+        "ref": "matrix-name",
+        "repo": "nix-github-actions",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1762111121,
+        "narHash": "sha256-4vhDuZ7OZaZmKKrnDpxLZZpGIJvAeMtK6FKLJYUtAdw=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "c8aa8cc00a5cb57fada0851a038d35c08a36a2bb",
+        "rev": "b3d51a0365f6695e7dd5cdf3e180604530ed33b4",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "nixos-25.05",
+        "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -80,15 +122,15 @@
           "home-manager"
         ],
         "nixpkgs": [
-          "nixpkgs-stable"
+          "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1761078382,
-        "narHash": "sha256-JNJesbe9MMN1Brq41BHEpuH+Z+Zg74y/nI5AFZX84Vw=",
+        "lastModified": 1762274591,
+        "narHash": "sha256-Vbhluvk15qwiyNDyPd9tjJh9gxIfUjbKVT79c05Pd3I=",
         "owner": "nix-community",
         "repo": "plasma-manager",
-        "rev": "27dfa61b64d0cdb8e4ba6f3aaa4d4e067d64cb5c",
+        "rev": "6296d7100cc84b2ff732b7c103a50c2856974cf6",
         "type": "github"
       },
       "original": {
@@ -102,7 +144,8 @@
         "firefox-addons": "firefox-addons",
         "hardware": "hardware",
         "home-manager": "home-manager",
-        "nixpkgs-stable": "nixpkgs-stable",
+        "jovian": "jovian",
+        "nixpkgs": "nixpkgs",
         "plasma-manager": "plasma-manager",
         "systems": "systems"
       }

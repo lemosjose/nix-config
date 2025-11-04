@@ -2,7 +2,6 @@
   pkgs,
   ...
 }: {
-
 hardware = {
     enableAllFirmware = true;
 
@@ -13,5 +12,4 @@ hardware = {
 	    enable32Bit = true;
     };
 };
-
 }

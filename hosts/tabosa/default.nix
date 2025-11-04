@@ -3,40 +3,43 @@
   inputs,
   ...
 }:{
-  imports = [
-    ./hardware-configuration.nix
+imports = [
+  ./hardware-configuration.nix
 
-    ../common/system/global
-    ../common/system
+  ../common/system/global
+  ../common/system
 
-    
-    ../common/system/misc/podman.nix
-    ../common/system/misc/plasma.nix
+  
+  ../common/system/misc/podman.nix
+  ../common/system/misc/plasma.nix
 
-    
-    ../common/users/lemos
-    ../common/users/Joseph
-  ];
+  
+  ../common/users/lemos
+  ../common/users/Joseph
+];
 
-  boot.kernelParams = [ "quiet" "splash" ];
+boot.kernelParams = [
+  "quiet"
+  "splash"
+];
 
-  networking.networkmanager.wifi.powersave = true; 
+networking.networkmanager.wifi.powersave = true; 
 
-  networking.hostName = "tabosa";
+networking.hostName = "tabosa";
 
-  powerManagement.powertop.enable = true;
+powerManagement.powertop.enable = true;
 
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
-  };
+hardware.bluetooth = {
+  enable = true;
+  powerOnBoot = true;
+};
 
-  users.defaultUserShell = pkgs.zsh;
+users.defaultUserShell = pkgs.zsh;
 
-  services.logind = {
-    powerKey = "suspend";
-    powerKeyLongPress = "poweroff";
-  };
+services.logind = {
+  powerKey = "suspend";
+  powerKeyLongPress = "poweroff";
+};
 
-  system.stateVersion = "25.05"; 
+system.stateVersion = "25.05"; 
 }

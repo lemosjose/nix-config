@@ -3,15 +3,19 @@
   ...
 }: {
 services = {
-  xserver = {
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
+  displayManager.gdm.enable = true;
+  displayManager.autoLogin = {
     enable = true;
+    user = "Joseph"; 
   };
+  desktopManager.gnome.enable = true;
+  
+  #starting to prepare for 25.11, it's coming! 
+  gnome.core-apps.enable = false;
 
   gnome.gnome-keyring.enable = true;
 
-  udev.packages = with pkgs; [ android-udev-rules gnome-settings-daemon];
+  udev.packages = with pkgs; [gnome-settings-daemon];
 
 };
 
@@ -19,7 +23,9 @@ environment.gnome.excludePackages =  with pkgs; [ geary totem gnome-weather gnom
 
 environment.systemPackages = with pkgs; [
   gnomeExtensions.gsconnect
-  gnomeExtensions.night-theme-switcher
+  gnomeExtensions.appindicator
+  gnomeExtensions.clipboard-indicator
+  nautilus
 ];
 
 
@@ -28,5 +34,4 @@ networking.firewall = rec {
   allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
   allowedUDPPortRanges = allowedTCPPortRanges;
 };
-
 }

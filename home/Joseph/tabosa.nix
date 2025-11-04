@@ -5,29 +5,29 @@
   ...
 }:
 {
-  imports = [
-    ../common
+imports = [
+  ../common
 
-    ../common/tabosa/plasma.nix
-  ];
+  ../common/tabosa/plasma.nix
+];
 
-  programs = {
-    zsh = {
-      history = {
-        path = "/home/Joseph/.zsh/history";
-      };
+programs = {
+  zsh = {
+    history = {
+      path = "/home/Joseph/.zsh/history";
     };
   };
+};
 
-  # Your user packages and home settings
-  home = {
-    stateVersion = "25.05";
+# Your user packages and home settings
+home = {
+  stateVersion = "25.05";
 
-    packages = with pkgs; [
-                            google-chrome
-                            postman
-                          ];
+  packages = with pkgs; [
+    google-chrome
+    postman
+  ];
 
-    homeDirectory = "/home/Joseph";
-  };
+  homeDirectory = "/home/Joseph";
+};
 }

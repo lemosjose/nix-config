@@ -2,11 +2,12 @@
   pkgs,
   inputs, 
   ...
-}:let
+}:
+let
   ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
 in{
   
-users.users.Joseph = {
+users.users.Travis = {
   isNormalUser= true;
   extraGroups = ifTheyExist [
     "adbusers"
@@ -19,11 +20,11 @@ users.users.Joseph = {
     "video"
 ];
   
-hashedPassword = "$y$j9T$yYbCRUzf6ju5ExOtuFcjd/$490UtXqCPI3Qci30GwG5vQmtIo0PEZUyuOcJN5TeTAA";
+hashedPassword = "$y$j9T$9iwPHpxzIbweCKUqR3SK30$p.nfZH0kg3Qnea79Jbdz8m0f5m1MSWjtIviHgZSGl53";
 
 packages = [pkgs.home-manager]; 
 };
 
-home-manager.users.Joseph = import ../../../../home/Joseph/${config.networking.hostName}.nix;
+home-manager.users.Travis = import ../../../../home/Travis/${config.networking.hostName}.nix;
 
 }

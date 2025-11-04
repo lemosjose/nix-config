@@ -3,51 +3,51 @@
   inputs,
   ...
 }: {
+imports = [
+  inputs.hardware.nixosModules.common-cpu-amd
+  inputs.hardware.nixosModules.common-gpu-amd
+  inputs.hardware.nixosModules.common-pc-ssd
 
-  imports = [
-    inputs.hardware.nixosModules.common-cpu-amd
-    inputs.hardware.nixosModules.common-gpu-amd
-    inputs.hardware.nixosModules.common-pc-ssd
+  ./hardware-configuration.nix
 
-    ./hardware-configuration.nix
+  ../common/system/global
 
-    ../common/system/global
+  ../common/system
 
-    ../common/system
+  ../common/system/misc/ollama.nix
+  ../common/system/misc/podman.nix
+  ../common/system/misc/gnome.nix 
 
-    ../common/system/misc/ollama.nix
-    ../common/system/misc/podman.nix
-    ../common/system/misc/gnome.nix 
+  ../common/users/lemos
+  ../common/users/Joseph
 
-    ../common/users/lemos
-    ../common/users/Joseph
- 
+  ./gaming
+  
+];
+
+services.xserver.videoDrivers = [ "amdgpu" ];
+
+boot = {
+  kernelParams = [
+	  "amdgpu.ppfeaturemask=0xffffffff"
+	  "amdgpu.gpu_recovery=1"
+	  "quiet"
+    "pcie_aspm=off"
+	  "splash"
   ];
 
-  services.xserver.videoDrivers = [ "amdgpu" ];
+  initrd.kernelModules = [ "amdgpu" ];
+};
 
-  boot = {
-    kernelParams = [
-	    "amdgpu.ppfeaturemask=0xffffffff"
-	    "amdgpu.gpu_recovery=1"
-	    "quiet"
-      "pcie_aspm=off"
-	    "splash"
-    ];
+networking.networkmanager.wifi.powersave = false; 
 
-    initrd.kernelModules = [ "amdgpu" ];
-  };
+virtualisation.waydroid.enable = true;
 
-  networking.networkmanager.wifi.powersave = false; 
+users.defaultUserShell = pkgs.zsh;
 
-  virtualisation.waydroid.enable = true;
+networking.hostName = "tizil";
 
-  users.defaultUserShell = pkgs.zsh;
+environment.systemPackages = with pkgs; [ aider-chat-full ];
 
-  networking.hostName = "tizil";
-
-  environment.systemPackages = with pkgs; [ aider-chat-full ];
-
-  system.stateVersion = "25.05";
-  
+system.stateVersion = "25.05";
 }

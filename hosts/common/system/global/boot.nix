@@ -1,5 +1,4 @@
 {
-
 boot = {
   loader.systemd-boot = { 
     enable = true; 
@@ -11,5 +10,9 @@ boot = {
   plymouth.enable = true; 
 
   supportedFilesystems = ["ntfs"];  
+};
+
+console = {
+  keyMap = "us"; 
 };
 }
