@@ -15,9 +15,7 @@ services = {
   tumbler.enable = true;
 
   devmon.enable = true;
-
-  flatpak.enable = true;
-
+  
   pipewire = {
     enable = true;
     wireplumber.enable = true; 

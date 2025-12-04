@@ -2,24 +2,24 @@
   pkgs,
   ...
 }: {
-  imports = [
-    ../common
+imports = [
+  ../common
 
-    ../common/tabosa/plasma.nix
-  ];
+  ../common/tabosa/plasma.nix
+];
 
-  programs = {
-    zsh = {
-      history = {
-        path = "/home/lemos/.zsh/history";
-      };
+programs = {
+  zsh = {
+    history = {
+      path = "/home/lemos/.zsh/history";
     };
   };
+};
 
-  # Your user packages and home settings
-  home = {
-    stateVersion = "25.05";
+# Your user packages and home settings
+home = {
+  stateVersion = "25.05";
 
-    homeDirectory = "/home/lemos";
-  };
+  homeDirectory = "/home/lemos";
+};
 }

@@ -6,30 +6,33 @@
 specialisation = {
   playstation = {
     inheritParentConfig = false;
+    _module.args = {
+      inherit pkgs inputs;
+    };
     configuration = {
 
-      system.stateVersion = "25.11";
+      boot.plymouth.enable = true;
 
+      system.stateVersion = "25.11";
+      
+      nixpkgs.hostPlatform = pkgs.system;
+      nixpkgs.config.allowUnfree = true;
+      
       imports = [
         inputs.jovian.nixosModules.default
         inputs.hardware.nixosModules.common-cpu-amd
         inputs.hardware.nixosModules.common-gpu-amd
         inputs.hardware.nixosModules.common-pc-ssd
         inputs.home-manager.nixosModules.home-manager
+        inputs.nix-flatpak.nixosModules.nix-flatpak
         
         ../hardware-configuration.nix
         ../../common/users/Travis
       ];
-      
 
-      nixpkgs.hostPlatform = pkgs.system;
-      nixpkgs.config.allowUnfree = true; 
-
-      environment.systemPackages = [
-        pkgs.firefox
-        pkgs.lutris
-        pkgs.heroic
-        pkgs.gogdl
+      environment.systemPackages = with pkgs; [
+        retroarch-full
+        dolphin-emu
       ];
 
       time.timeZone = "America/Sao_Paulo";
@@ -42,6 +45,15 @@ specialisation = {
       services = {
         openssh.enable = true;
         desktopManager.plasma6.enable = true;
+        flatpak.enable = true;
+        flatpak.packages = [
+          "net.lutris.Lutris"
+          "com.heroicgameslauncher.hgl"
+          "net.pcsx2.PCSX2"
+          "info.cemu.Cemu"
+          "app.xemu.xemu"
+          "org.telegram.desktop"
+        ];
       };
 
       hardware = {

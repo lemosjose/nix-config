@@ -20,9 +20,10 @@ programs = {
       cd = "z";
       ls = "eza";
       vim = "nvim";
-      cobrinha = "nix-shell ${config.home.homeDirectory}/nix-config/shells/python.nix";
-      pato = "nix-shell ${config.home.homeDirectory}/nix-config/shells/fullstack.nix";
-      caixinha = "nix-shell ${config.home.homeDirectory}/nix-config/shells/haskell.nix";
+      cobrinha = "nix-shell ${config.home.homeDirectory}/nix-config/shells/python.nix --run zsh";
+      pato = "nix-shell ${config.home.homeDirectory}/nix-config/shells/fullstack.nix --run zsh";
+      robozinho = "nix-shell ${config.home.homeDirectory}/nix-config/shells/robo.nix --run zsh"; 
+      caixinha = "nix-shell ${config.home.homeDirectory}/nix-config/shells/haskell.nix --run zsh";
     };
     oh-my-zsh = {
       enable = true;

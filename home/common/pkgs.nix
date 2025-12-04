@@ -10,10 +10,10 @@ home.packages = with pkgs; [
   calibre
   vlc
   pavucontrol
-  spotify
-  vivaldi
   emacs-pgtk
   ghostty
   papers
+  zotero
+  zeal
 ]; 
 }

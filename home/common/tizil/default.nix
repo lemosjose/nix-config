@@ -3,6 +3,10 @@
   ...
 }:{
 
+imports = [
+    ./gnome-extra.nix
+];
+
 qt = {
   enable = true;
   platformTheme.name = "adwaita";
@@ -27,7 +31,7 @@ dconf.settings = {
   };
 
   "org/gnome/shell" = {
-    enabled-extensions = [ "gsconnect@andyholmes.github.io" ];
+    enabled-extensions = [ "gsconnect@andyholmes.github.io" "clipboard-indicator@tudmotu.com" "appindicatorsupport@rgcjonas.gmail.com" ];
     favorite-apps = [ "org.gnome.Nautilus.desktop" "org.keepassxc.KeePassXC.desktop" "code.desktop" "firefox.desktop" "emacs.desktop" "org.telegram.desktop.desktop" "org.gnome.Lollypop.desktop" "vivaldi-stable.desktop" "com.spotify.Client.desktop" ];
     last-selected-power-profile = "performance";
     welcome-dialog-last-shown-version = "48.2";
@@ -51,6 +55,10 @@ dconf.settings = {
   "org/gnome/desktop/wm/keybindings" = {
     switch-to-workspace-left = [ "<Control><Super>Left" ];
     switch-to-workspace-right = [ "<Control><Super>Right" ];
+  };
+
+  "org/gnome/settings-daemon/plugins/housekeeping" = {
+    donation-reminder-enabled = false ;
   };
 
 };

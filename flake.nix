@@ -5,8 +5,10 @@ inputs = {
 
   nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+  nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
+
   home-manager = { 
-    url = "github:nix-community/home-manager";
+    url = "github:nix-community/home-manager/master";
 	  inputs.nixpkgs.follows = "nixpkgs";
   };
 
@@ -19,8 +21,6 @@ inputs = {
     url = "github:Jovian-Experiments/Jovian-NixOS?shallow=true";
     inputs.nixpkgs.follows = "nixpkgs";
   };
-
-  systems.url = "github:nix-systems/default-linux";
 
   hardware.url = "github:nixos/nixos-hardware";
 
@@ -35,16 +35,17 @@ outputs = {
   self,
     nixpkgs,
     home-manager,
-    systems,
     firefox-addons, 
     hardware,
-    jovian, 
+    jovian,
+    nix-flatpak,
     plasma-manager,
 } @ inputs: let
   inherit (self) outputs;
+  hostPlatform.system = "x86_64-linux";
   lib = nixpkgs.lib // home-manager.lib;
-  forEachSystem = f: lib.genAttrs (import systems) (system: f pkgsFor.${system});
-  pkgsFor = lib.genAttrs (import systems) (
+  forEachSystem = f: lib.genAttrs (import hostPlatform.system) (system: f pkgsFor.${hostPlatform.system});
+  pkgsFor = lib.genAttrs (import hostPlatform.system) (
     system:
     import nixpkgs {
       inherit system;

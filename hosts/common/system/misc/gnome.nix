@@ -13,13 +13,15 @@ services = {
   #starting to prepare for 25.11, it's coming! 
   gnome.core-apps.enable = false;
 
+  gnome.gnome-online-accounts.enable = true; 
+
   gnome.gnome-keyring.enable = true;
 
   udev.packages = with pkgs; [gnome-settings-daemon];
 
 };
 
-environment.gnome.excludePackages =  with pkgs; [ geary totem gnome-weather gnome-music evince ];
+environment.gnome.excludePackages =  with pkgs; [ gnome-tour gnome-user-docs ];
 
 environment.systemPackages = with pkgs; [
   gnomeExtensions.gsconnect

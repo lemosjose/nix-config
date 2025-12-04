@@ -196,16 +196,15 @@ programs.firefox = {
 
   search.force = true;
 
-  search.default = "ecosia";
+  search.default = "Kagi Search";
 
-  search.order = [ "ecosia" "ddg" ]; 
+  search.order = [ "Kagi Search" "ddg" ]; 
 
   search.engines = {
-    "ecosia" = {
-      definedAliases = ["@eco"];
+    "Kagi Search" = {
       urls = [
         {
-          template = "https://www.ecosia.org/search";
+          template = "https://kagi.com/search";
           params = [
             {
               name = "q";
@@ -214,7 +213,9 @@ programs.firefox = {
           ];
         }
       ];
+      definedAliases = ["@k"];
     };
+
     "Nix Packages" = {
       urls = [
         {
