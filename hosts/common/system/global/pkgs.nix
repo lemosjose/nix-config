@@ -25,5 +25,6 @@ environment.systemPackages = with pkgs; [
   android-tools
   brightnessctl
   nodePackages.typescript
+  elixir
 ];
 }

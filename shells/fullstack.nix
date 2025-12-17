@@ -24,6 +24,7 @@ pkgs.mkShell {
     corepack
     prisma-engines
     uv
+    mkcert
   ];
 
   nativeBuildInputs = with pkgs; [

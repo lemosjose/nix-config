@@ -11,7 +11,7 @@ imports = [
 
   
   ../common/system/misc/podman.nix
-  ../common/system/misc/plasma.nix
+  ../common/system/misc/cosmic.nix
 
   
   ../common/users/lemos

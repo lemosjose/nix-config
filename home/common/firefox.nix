@@ -31,8 +31,6 @@ programs.firefox = {
       darkreader
       search-by-image
       dearrow
-      old-reddit-redirect
-      privacy-badger
     ];
     # >:) 
     extensions.force = true;
@@ -196,26 +194,12 @@ programs.firefox = {
 
   search.force = true;
 
-  search.default = "Kagi Search";
+  search.default = "ddg";
 
-  search.order = [ "Kagi Search" "ddg" ]; 
+  search.order = [ "ddg" ]; 
 
   search.engines = {
-    "Kagi Search" = {
-      urls = [
-        {
-          template = "https://kagi.com/search";
-          params = [
-            {
-              name = "q";
-              value = "{searchTerms}";
-            }
-          ];
-        }
-      ];
-      definedAliases = ["@k"];
-    };
-
+ 
     "Nix Packages" = {
       urls = [
         {

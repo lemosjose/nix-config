@@ -25,6 +25,7 @@ home = {
   packages = with pkgs; [
     google-chrome
     postman
+    zed-editor
   ];
 };
 

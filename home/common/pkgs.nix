@@ -12,6 +12,7 @@ home.packages = with pkgs; [
   pavucontrol
   emacs-pgtk
   ghostty
+  chromium
   papers
   zotero
   zeal
