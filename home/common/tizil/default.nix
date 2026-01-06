@@ -31,10 +31,8 @@ dconf.settings = {
   };
 
   "org/gnome/shell" = {
-    enabled-extensions = [ "gsconnect@andyholmes.github.io" "clipboard-indicator@tudmotu.com" "appindicatorsupport@rgcjonas.gmail.com" ];
     favorite-apps = [ "org.gnome.Nautilus.desktop" "org.keepassxc.KeePassXC.desktop" "code.desktop" "firefox.desktop" "emacs.desktop" "org.telegram.desktop.desktop" "org.gnome.Lollypop.desktop" "vivaldi-stable.desktop" "com.spotify.Client.desktop" ];
     last-selected-power-profile = "performance";
-    welcome-dialog-last-shown-version = "48.2";
   };
 
   "org/gnome/settings-daemon/plugins/color" = {
@@ -43,6 +41,10 @@ dconf.settings = {
     night-light-schedule-from = 0.0;
     night-light-schedule-to = 23.983333333333334;
     night-light-temperature = 1937;
+  };
+
+  "org/gnome/settings-daemon/plugins/power" = {
+    sleep-inactive-ac-timeout = 600;
   };
 
   

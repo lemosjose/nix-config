@@ -25,6 +25,9 @@ pkgs.mkShell {
     prisma-engines
     uv
     mkcert
+    inotify-tools
+    elixir
+    stripe-cli
   ];
 
   nativeBuildInputs = with pkgs; [
