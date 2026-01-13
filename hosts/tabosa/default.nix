@@ -41,5 +41,12 @@ services.logind = {
   powerKeyLongPress = "poweroff";
 };
 
+services.zfs.auto-snapshot = {
+  enable = true;
+  weekly = 4;
+};
+
+networking.hostId = "1a2b3c4d";
+
 system.stateVersion = "25.05"; 
 }

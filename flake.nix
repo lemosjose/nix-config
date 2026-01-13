@@ -45,6 +45,7 @@ outputs = {
     jovian,
     nix-flatpak,
     plasma-manager,
+    disko,
 } @ inputs: let
   inherit (self) outputs;
   hostPlatform.system = "x86_64-linux";

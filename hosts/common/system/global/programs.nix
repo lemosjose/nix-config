@@ -16,8 +16,6 @@ programs = {
     fontconfig
     cairo
   ];
-  
-  adb.enable = true;
 
   zsh.enable = true;
 };

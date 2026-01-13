@@ -4,41 +4,42 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports =
+imports =
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
-  boot.initrd.kernelModules = [ "dm-snapshot" ];
-  boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [ ];
+boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
+boot.initrd.kernelModules = [ "dm-snapshot" ];
+boot.kernelModules = [ "kvm-amd" ];
+boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    { device = "/dev/lemos/root";
-      fsType = "ext4";
-    };
+fileSystems."/" =
+  { device = "/dev/mapper/sspx-anchieta";
+    fsType = "xfs";
+  };
 
-  fileSystems."/home" =
-    { device = "/dev/lemos/home";
-      fsType = "ext4";
-    };
+fileSystems."/boot" =
+  { device = "/dev/disk/by-uuid/C89C-18BD";
+    fsType = "vfat";
+    options = [ "fmask=0077" "dmask=0077" ];
+  };
 
-  fileSystems."/home/lemos/Learning" = 
-    { device = "/dev/disk/by-uuid/48f579b5-a9b7-46a2-a64d-353ba1580e13"; 
-      fsType = "ext4";
-    };
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/0374-5E79";
-      fsType = "vfat";
-      options = [ "fmask=0022" "dmask=0022" ];
-    };
+fileSystems."/home" =
+  { device = "/dev/mapper/sspx-econe";
+    fsType = "ext4";
+  };
 
-  swapDevices =
-    [ { device = "/dev/lemos/swap "; }
-    ];
+swapDevices =
+  [ { device = "/dev/mapper/sspx-galarreta"; }
+  ];
 
-  networking.useDHCP = lib.mkDefault true;
+fileSystems."/home/lemos/Learning" = 
+  { device = "/dev/disk/by-uuid/48f579b5-a9b7-46a2-a64d-353ba1580e13"; 
+    fsType = "ext4";
+  };
 
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+networking.useDHCP = lib.mkDefault true;
+
+nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

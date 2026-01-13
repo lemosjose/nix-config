@@ -31,8 +31,19 @@ specialisation = {
       ];
 
       environment.systemPackages = with pkgs; [
-        retroarch-full
         dolphin-emu
+        (retroarch.withCores (cores: with cores; [
+          genesis-plus-gx
+          snes9x
+          bsnes
+          citra
+          ppsspp
+          flycast
+          quicknes
+          mgba
+          puae
+          gambatte
+        ]))
       ];
 
       time.timeZone = "America/Sao_Paulo";

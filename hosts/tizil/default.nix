@@ -29,10 +29,7 @@ services.xserver.videoDrivers = [ "amdgpu" ];
 
 boot = {
   kernelParams = [
-	  "amdgpu.ppfeaturemask=0xffffffff"
-	  "amdgpu.gpu_recovery=1"
 	  "quiet"
-    "pcie_aspm=off"
 	  "splash"
   ];
 
