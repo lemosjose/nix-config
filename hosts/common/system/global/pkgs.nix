@@ -26,5 +26,6 @@ environment.systemPackages = with pkgs; [
   brightnessctl
   nodePackages.typescript
   elixir
+  alacritty
 ];
 }

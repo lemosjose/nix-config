@@ -3,13 +3,10 @@
   inputs, 
   ...
 }:
-let
-  ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
-in{
-  
+{  
 users.users.Travis = {
   isNormalUser= true;
-  extraGroups = ifTheyExist [
+  extraGroups = [
     "adbusers"
     "wheel"
     "input"

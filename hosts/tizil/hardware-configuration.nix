@@ -13,26 +13,6 @@ boot.initrd.kernelModules = [ "dm-snapshot" ];
 boot.kernelModules = [ "kvm-amd" ];
 boot.extraModulePackages = [ ];
 
-fileSystems."/" =
-  { device = "/dev/mapper/sspx-anchieta";
-    fsType = "xfs";
-  };
-
-fileSystems."/boot" =
-  { device = "/dev/disk/by-uuid/C89C-18BD";
-    fsType = "vfat";
-    options = [ "fmask=0077" "dmask=0077" ];
-  };
-
-fileSystems."/home" =
-  { device = "/dev/mapper/sspx-econe";
-    fsType = "ext4";
-  };
-
-swapDevices =
-  [ { device = "/dev/mapper/sspx-galarreta"; }
-  ];
-
 fileSystems."/home/lemos/Learning" = 
   { device = "/dev/disk/by-uuid/48f579b5-a9b7-46a2-a64d-353ba1580e13"; 
     fsType = "ext4";

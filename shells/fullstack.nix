@@ -20,7 +20,6 @@ pkgs.mkShell {
     typescript
     eslint
     prettier
-    poetry
     corepack
     prisma-engines
     uv

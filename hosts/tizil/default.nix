@@ -9,6 +9,7 @@ imports = [
   inputs.hardware.nixosModules.common-pc-ssd
 
   ./hardware-configuration.nix
+  ./disko.nix 
 
   ../common/system/global
 
@@ -43,6 +44,11 @@ virtualisation.waydroid.enable = true;
 users.defaultUserShell = pkgs.zsh;
 
 networking.hostName = "tizil";
+
+hardware.cpu.amd = {
+  updateMicrocode = true;
+  ryzen-smu.enable = true;
+};
 
 environment.systemPackages = with pkgs; [ aider-chat-full ];
 

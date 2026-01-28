@@ -19,6 +19,7 @@ specialisation = {
       nixpkgs.config.allowUnfree = true;
       
       imports = [
+        inputs.disko.nixosModules.disko
         inputs.jovian.nixosModules.default
         inputs.hardware.nixosModules.common-cpu-amd
         inputs.hardware.nixosModules.common-gpu-amd
@@ -26,8 +27,9 @@ specialisation = {
         inputs.home-manager.nixosModules.home-manager
         inputs.nix-flatpak.nixosModules.nix-flatpak
         
-        ../hardware-configuration.nix
+        ../disko.nix
         ../../common/users/Travis
+        ../hardware-configuration.nix
       ];
 
       environment.systemPackages = with pkgs; [
@@ -69,7 +71,12 @@ specialisation = {
 
       hardware = {
         bluetooth.enable = true;
-        enableAllFirmware = true; 
+        enableAllFirmware = true;
+        graphics = {
+          enable = true;
+          enable32Bit = true; 
+        };
+        xone.enable = true;
         cpu.amd = {
           updateMicrocode = true;
           ryzen-smu.enable = true; 

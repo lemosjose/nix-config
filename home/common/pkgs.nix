@@ -16,5 +16,7 @@ home.packages = with pkgs; [
   papers
   zotero
   zeal
+  gnome-disk-utility
+  gnome-system-monitor
 ]; 
 }

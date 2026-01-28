@@ -5,6 +5,7 @@
 }:{
 imports = [
   ./hardware-configuration.nix
+  ./disko.nix
 
   ../common/system/global
   ../common/system

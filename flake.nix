@@ -65,14 +65,20 @@ in{
   nixosConfigurations = {
     #main desktop 
     tizil = lib.nixosSystem {
-      modules = [./hosts/tizil];
+      modules = [
+        inputs.disko.nixosModules.disko
+        ./hosts/tizil
+      ];
       specialArgs = {
         inherit inputs outputs;
       };
     };
     #laptop (Samsung)
     tabosa = lib.nixosSystem {
-      modules = [./hosts/tabosa];
+      modules = [
+        inputs.disko.nixosModules.disko
+        ./hosts/tabosa
+      ];
       specialArgs = {
         inherit inputs outputs;
       };
