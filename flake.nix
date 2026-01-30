@@ -83,6 +83,16 @@ in{
         inherit inputs outputs;
       };
     };
+    #media server(old laptop)
+    revende = lib.nixosSystem {
+      modules = [
+        inputs.disko.nixosModules.disko
+        ./hosts/revende
+      ];
+      specialArgs = {
+        inherit inputs outputs; 
+      };
+    };
   };
   
   #For WSL2 and (maybe :^) ) other distros

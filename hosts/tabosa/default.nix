@@ -9,11 +9,8 @@ imports = [
 
   ../common/system/global
   ../common/system
-
-  
   ../common/system/misc/podman.nix
-  ../common/system/misc/cosmic.nix
-
+  ../common/system/misc/gnome.nix
   
   ../common/users/lemos
   ../common/users/Joseph
@@ -42,10 +39,12 @@ services.logind = {
   powerKeyLongPress = "poweroff";
 };
 
-services.zfs.auto-snapshot = {
+services.zfs.autoSnapshot = {
   enable = true;
   weekly = 4;
 };
+
+services.zfs.trim.enable = true;
 
 networking.hostId = "1a2b3c4d";
 

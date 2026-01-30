@@ -1,9 +1,9 @@
 # Nix-Config 
 
 
-Simple repository for storing my current nix configuration, i have a simple setup, a Full-AMD Desktop and a Samsung laptop, wich is sadly not with gnome due to it's 768p scren, i wasn't patient enough to reduce the titlebars
+Simple repository for storing my current nix configuration, i have a simple setup, a Full-AMD Desktop, a samsung laptop and an old hp laptop working as a local media server with services related to media consumption.
 
-Both hostnames are based on "Garras da Patrulha" characters.
+All hostnames are based on "Garras da Patrulha" characters.
 
 ## Tizil 
 
@@ -16,6 +16,12 @@ Tizil with Ery Soares
 ![tabosa](readme-assets/tabosa.jpg)
 
 Tabosa, featured in the "Panelada" plot from the Show "Garras da Patrulha"
+
+## Revende 
+
+Marcelo Revende, featured in the Fictional Show "Rabo de Foguete"
+
+![revende](readme-assets/revende.jpg)
 
 ## Organization 
 
