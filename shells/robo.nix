@@ -5,6 +5,16 @@ pkgs.mkShell {
     pkgs.nodejs_20
     pkgs.jdk17
     pkgs.watchman
+    pkgs.unzip
+    pkgs.git
+    pkgs.flutter
+    pkgs.cmake
+    pkgs.ninja
+    pkgs.clang
+    pkgs.pkg-config
+    pkgs.gtk3
+    pkgs.xz
+    pkgs.pcre
   ];
 
   shellHook = ''
