@@ -1,5 +1,4 @@
-# :^) yeah it's using unstable
-{ pkgs ? import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz") {} }:
+{ pkgs ? import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-25.11.tar.gz") {} }:
 
 pkgs.mkShell {
   name = "fullstack-dev-shell";

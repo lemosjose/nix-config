@@ -7,7 +7,6 @@ home.packages = with pkgs; [
   #do not remove, it works inside emacs 
   mupdf
   discord
-  calibre
   vlc
   pavucontrol
   emacs-pgtk
@@ -15,8 +14,18 @@ home.packages = with pkgs; [
   chromium
   papers
   zotero
+  epiphany
+  antigravity-fhs
+  pyright
+  wl-clipboard
+  telegram-desktop
+  ptyxis
+  pyright
   zeal
   gnome-disk-utility
   gnome-system-monitor
+  code-cursor-fhs
+  kiro-fhs
+  obsidian
 ]; 
 }
