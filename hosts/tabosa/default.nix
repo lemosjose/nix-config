@@ -11,7 +11,6 @@ imports = [
   ../common/system
   ../common/system/misc/podman.nix
   ../common/system/misc/gnome.nix
-  ../common/system/hybridGPU/hybrid.nix
   
   ../common/users/lemos
   ../common/users/Joseph
@@ -35,9 +34,9 @@ hardware.bluetooth = {
 
 users.defaultUserShell = pkgs.zsh;
 
-services.logind = {
-  powerKey = "suspend";
-  powerKeyLongPress = "poweroff";
+services.logind.settings.Login = {
+  HandlePowerKey = "suspend";
+  HandlePowerKeyLongPress = "poweroff";
 };
 
 services.zfs.autoSnapshot = {

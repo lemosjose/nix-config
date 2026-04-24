@@ -24,7 +24,6 @@ environment.systemPackages = with pkgs; [
   cairo 
   android-tools
   brightnessctl
-  nodePackages.typescript
   elixir
   alacritty
 ];

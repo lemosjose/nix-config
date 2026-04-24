@@ -16,16 +16,25 @@ home.packages = with pkgs; [
   zotero
   epiphany
   antigravity-fhs
+  dbeaver-bin
   pyright
   wl-clipboard
+  zola 
   telegram-desktop
   ptyxis
   pyright
   zeal
+  tilix
   gnome-disk-utility
   gnome-system-monitor
   code-cursor-fhs
   kiro-fhs
   obsidian
+  easyeffects
+  awscli2
+  terraform
+  direnv
+  mlocate
+  calibre
 ]; 
 }
