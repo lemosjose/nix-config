@@ -17,6 +17,7 @@ users.users.Joseph = {
     "polkit"
     "networkmanager"
     "video"
+    "kvm"
 ];
   
 hashedPassword = "$y$j9T$yYbCRUzf6ju5ExOtuFcjd/$490UtXqCPI3Qci30GwG5vQmtIo0PEZUyuOcJN5TeTAA";
