@@ -24,7 +24,6 @@ home = {
 
   packages = with pkgs; [
     google-chrome
-    postman
     awscli2
     google-cloud-sdk-gce
   ];

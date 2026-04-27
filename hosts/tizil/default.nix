@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  lib, 
   ...
 }: {
 imports = [
@@ -50,7 +51,7 @@ hardware.cpu.amd = {
   ryzen-smu.enable = true;
 };
 
-environment.systemPackages = with pkgs; [ aider-chat-full ];
+environment.systemPackages = lib.mkAfter [ pkgs.lmstudio pkgs.opencode ]; 
 
 system.stateVersion = "25.05";
 }
