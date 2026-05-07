@@ -29,12 +29,18 @@ home.packages = with pkgs; [
   gnome-system-monitor
   code-cursor-fhs
   kiro-fhs
+  slack
   obsidian
   easyeffects
   awscli2
   terraform
   direnv
+  nixfmt
+  slack
   mlocate
+  gh
+  obs-studio
   calibre
+  pritunl-client
 ]; 
 }

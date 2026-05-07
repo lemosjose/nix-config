@@ -11,6 +11,7 @@ imports = [
   ../common/system
   ../common/system/misc/podman.nix
   ../common/system/misc/gnome.nix
+  ../common/system/misc/ollama.nix
   
   ../common/users/lemos
   ../common/users/Joseph

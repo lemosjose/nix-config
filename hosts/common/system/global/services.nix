@@ -15,6 +15,8 @@ services = {
   tumbler.enable = true;
 
   devmon.enable = true;
+
+  resolved.enable = true; 
   
   pipewire = {
     enable = true;
