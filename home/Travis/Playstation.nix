@@ -18,7 +18,6 @@ home.packages = with pkgs; [
   keepassxc
   papers
   discord
-  spotify
   vlc
   firefox
   pavucontrol
