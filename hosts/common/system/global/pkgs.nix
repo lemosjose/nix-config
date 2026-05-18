@@ -25,6 +25,8 @@ environment.systemPackages = with pkgs; [
   android-tools
   brightnessctl
   elixir
+  dnsutils
   alacritty
+  nixd 
 ];
 }

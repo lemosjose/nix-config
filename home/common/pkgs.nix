@@ -20,7 +20,6 @@ home.packages = with pkgs; [
   pyright
   wl-clipboard
   zola 
-  telegram-desktop
   ptyxis
   pyright
   zeal

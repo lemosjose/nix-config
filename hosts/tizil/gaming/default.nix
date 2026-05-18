@@ -15,7 +15,7 @@ specialisation = {
 
       system.stateVersion = "25.11";
       
-      nixpkgs.hostPlatform = pkgs.system;
+      nixpkgs.hostPlatform = pkgs.stdenv.hostPlatform.system;
       nixpkgs.config.allowUnfree = true;
       
       imports = [

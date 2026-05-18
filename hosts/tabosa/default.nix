@@ -28,6 +28,8 @@ networking.hostName = "tabosa";
 
 powerManagement.powertop.enable = true;
 
+boot.zfs.forceImportRoot = false; 
+
 hardware.bluetooth = {
   enable = true;
   powerOnBoot = true;
