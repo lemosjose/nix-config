@@ -23,6 +23,7 @@ environment.systemPackages = with pkgs; [
   rPackages.pkgconfig 
   cairo 
   android-tools
+  basedpyright
   brightnessctl
   elixir
   dnsutils

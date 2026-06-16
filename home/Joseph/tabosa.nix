@@ -26,7 +26,7 @@ home = {
   packages = with pkgs; [
     google-chrome
     postman
-    zed-editor
+    awscli2
   ];
 
   homeDirectory = "/home/Joseph";
