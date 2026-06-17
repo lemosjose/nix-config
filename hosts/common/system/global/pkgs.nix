@@ -28,6 +28,8 @@ environment.systemPackages = with pkgs; [
   elixir
   dnsutils
   alacritty
+  ntfs3g
   nixd 
+  uv
 ];
 }
