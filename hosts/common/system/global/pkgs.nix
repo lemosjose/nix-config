@@ -31,5 +31,6 @@ environment.systemPackages = with pkgs; [
   ntfs3g
   nixd 
   uv
+  kiro-cli
 ];
 }
