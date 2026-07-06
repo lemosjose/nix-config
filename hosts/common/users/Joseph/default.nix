@@ -19,7 +19,14 @@ users.users.Joseph = {
     "video"
     "kvm"
 ];
-  
+
+  subUidRanges = [
+    { startUid = 100000; count = 65536; }
+  ];
+  subGidRanges = [
+    { startGid = 100000; count = 65536; }
+  ];
+
 hashedPassword = "$y$j9T$yYbCRUzf6ju5ExOtuFcjd/$490UtXqCPI3Qci30GwG5vQmtIo0PEZUyuOcJN5TeTAA";
 
 packages = [pkgs.home-manager]; 

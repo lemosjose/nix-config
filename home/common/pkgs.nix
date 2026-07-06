@@ -1,45 +1,47 @@
 {
   pkgs,
   ...
-}: {
-home.packages = with pkgs; [
-  keepassxc
-  #do not remove, it works inside emacs 
-  mupdf
-  discord
-  vlc
-  pavucontrol
-  emacs-pgtk
-  ghostty
-  chromium
-  papers
-  zotero
-  epiphany
-  antigravity-fhs
-  dbeaver-bin
-  pyright
-  wl-clipboard
-  zola 
-  ptyxis
-  pyright
-  zeal
-  tilix
-  gnome-disk-utility
-  gnome-system-monitor
-  code-cursor-fhs
-  kiro-fhs
-  slack
-  obsidian
-  easyeffects
-  awscli2
-  terraform
-  direnv
-  nixfmt
-  slack
-  mlocate
-  gh
-  obs-studio
-  calibre
-  pritunl-client
-]; 
+}:
+{
+  home.packages = with pkgs; [
+    keepassxc
+    #do not remove, it works inside emacs
+    mupdf
+    discord
+    vlc
+    pavucontrol
+    emacs-pgtk
+    ghostty
+    chromium
+    papers
+    zotero
+    epiphany
+    antigravity-fhs
+    dbeaver-bin
+    pyright
+    wl-clipboard
+    zola
+    ptyxis
+    pyright
+    zeal
+    tilix
+    gnome-disk-utility
+    gnome-system-monitor
+    code-cursor-fhs
+    kiro-fhs
+    slack
+    obsidian
+    easyeffects
+    awscli2
+    terraform
+    direnv
+    nixfmt
+    slack
+    mlocate
+    gh
+    obs-studio
+    calibre
+    pritunl-client
+    claude-code
+  ];
 }

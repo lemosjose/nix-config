@@ -2,7 +2,7 @@
 
 #emacs.gitignore
 
-
+flake.lock
 ./wallpapers/
 .codex
 *~
