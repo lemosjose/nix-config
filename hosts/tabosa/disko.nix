@@ -22,14 +22,14 @@ disko.devices = {
             content = {
               type = "swap";
               discardPolicy = "both";
-              resumeDevice = true; 
+              resumeDevice = true;
             };
           };
-          zfs = {
+          primary = {
             size = "100%";
             content = {
-              type = "zfs";
-              pool = "zroot";
+              type = "lvm_pv";
+              vg = "tabosaVG";
             };
           };
         };
@@ -41,46 +41,49 @@ disko.devices = {
       content = {
         type = "gpt";
         partitions = {
-          zfs = {
+          primary = {
             size = "100%";
             content = {
-              type = "zfs";
-              pool = "zroot";
+              type = "lvm_pv";
+              vg = "tabosaVG";
             };
           };
         };
       };
     };
   };
-  zpool = {
-    zroot = {
-      type = "zpool";
-      options.cachefile = "none";
-      rootFsOptions = {
-        compression = "zstd";
-        acltype = "posixacl";
-        xattr = "sa";
-        "com.sun:auto-snapshot" = "false";
-      };
-      datasets = {
+
+  lvm_vg = {
+    tabosaVG = {
+      type = "lvm_vg";
+      lvs = {
+        # `/` is created first (priority) so the %FREE math below is deterministic.
+        # It holds the whole Nix store, so it gets the largest slice — NOT a token 15%.
         root = {
-          type = "zfs_fs";
-          mountpoint = "/";
-          options.mountpoint = "legacy";
-          options."com.sun:auto-snapshot" = "true";
+          priority = 100;
+          size = "40%FREE"; # ~40% of the VG
+          content = {
+            type = "filesystem";
+            format = "ext4";
+            mountpoint = "/";
+            mountOptions = [ "defaults" "noatime" ];
+          };
         };
+
         home = {
-          type = "zfs_fs";
-          mountpoint = "/home";
-          options.mountpoint = "legacy";
-          options."com.sun:auto-snapshot" = "true";
+          priority = 200;
+          size = "60%FREE"; # 60% of the remaining 60% ≈ 36% of the VG
+          content = {
+            type = "filesystem";
+            format = "ext4";
+            mountpoint = "/home";
+            mountOptions = [ "defaults" "noatime" ];
+          };
         };
-        nix = {
-          type = "zfs_fs";
-          options.mountpoint = "legacy";
-          mountpoint = "/nix";
-          options.atime = "off";
-        };
+
+        # ~24% of the VG is intentionally left UNALLOCATED. That free space is the
+        # copy-on-write reserve LVM snapshots grow into (see ./snapshots.nix).
+        # If you ever want more usable space, `lvextend` home into the reserve.
       };
     };
   };

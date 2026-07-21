@@ -12,7 +12,7 @@ environment.systemPackages = with pkgs; [
   distrobox
   efibootmgr
   podman-compose
-  texlive.combined.scheme-full
+  texliveFull
   openvpn
   libarchive
   leiningen
@@ -25,7 +25,7 @@ environment.systemPackages = with pkgs; [
   android-tools
   basedpyright
   brightnessctl
-  elixir
+  beamPackages.elixir
   dnsutils
   alacritty
   ntfs3g
