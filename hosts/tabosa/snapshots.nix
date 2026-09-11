@@ -25,8 +25,6 @@ let
   # How many snapshots to keep per tier. Bump these if you have spare VG reserve;
   # lower them if the disk is small. Total per LV = sum of these.
   retention = {
-    hourly = 12; # last ~12 hours
-    daily = 7; # last week
     weekly = 4; # last month
   };
 
@@ -71,8 +69,6 @@ let
   };
 
   onCalendar = {
-    hourly = "hourly";
-    daily = "daily";
     weekly = "weekly";
   };
 
