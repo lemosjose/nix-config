@@ -41,6 +41,10 @@ nix flake check
 
 There is no test suite, linter, or CI in this repo — validation is `nixos-rebuild build`/`switch` succeeding on the target host.
 
+## Repo etiquette
+
+**Never run `git commit` or `git push` in this repo, under any circumstances — not even on an explicit-sounding request like "sync the repo" or "commit this."** This repo is manually synced across three machines (tizil/tabosa/revende); the user wants full manual control over what enters history and when. Stage and prepare changes, leave the working tree ready, and tell the user exactly what's ready — they run the commit/push themselves. (This is enforced technically too, via a `permissions.deny` rule in `.claude/settings.json` blocking `git commit`/`git push`, in addition to this instruction — the deny rule is the backstop, this note is the reason.)
+
 **`flake.lock` is intentionally not committed** — do not `git add` it or re-track it unless explicitly asked; inputs are meant to float rather than be pinned in git.
 
 ## Architecture

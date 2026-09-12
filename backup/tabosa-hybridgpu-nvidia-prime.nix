@@ -1,3 +1,9 @@
+# Hybrid Intel+NVIDIA PRIME setup from the OLD tabosa (Samsung) hardware.
+# Retired: the replacement machine is a Ryzen 7 7735HS (Radeon 680M iGPU,
+# no discrete NVIDIA), so the proprietary driver, nouveau blacklist and the
+# hardcoded PRIME bus IDs below (PCI:0:2:0 / PCI:1:0:0 — the Samsung's PCI
+# topology) do not apply and would leave X/Wayland with no usable driver.
+# Kept for reference only — not imported anywhere.
 {
   lib,
   config,

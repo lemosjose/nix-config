@@ -1,3 +1,10 @@
+# Companion to backup/tabosa-disko-lvm-ext4.nix (the old, replaced hardware).
+# Unchanged from the live file it was copied from — still uses the
+# pre-rename tabosaVG/root/home names, since this was never actually
+# updated when that renaming happened. Kept for reference only, not
+# imported anywhere. The new tabosa hardware uses btrfs, which has its own
+# native (and very different) snapshot mechanism — this LVM-specific
+# approach doesn't carry over.
 {
   config,
   pkgs,
