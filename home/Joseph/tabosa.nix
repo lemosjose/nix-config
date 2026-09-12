@@ -25,7 +25,6 @@
 
     packages = with pkgs; [
       google-chrome
-      postman
       awscli2
     ];
 

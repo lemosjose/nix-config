@@ -4,25 +4,17 @@
 }:
 {
   home.packages = with pkgs; [
-    keepassxc
     #do not remove, it works inside emacs
     mupdf
-    discord
     vlc
     pavucontrol
-    emacs-pgtk
-    ghostty
-    chromium
     papers
     zotero
-    epiphany
     antigravity-fhs
     dbeaver-bin
     pyright
     wl-clipboard
     zola
-    ptyxis
-    pyright
     zeal
     tilix
     gnome-disk-utility
@@ -36,7 +28,6 @@
     gnome-calendar
     direnv
     nixfmt
-    slack
     mlocate
     gh
     obs-studio
