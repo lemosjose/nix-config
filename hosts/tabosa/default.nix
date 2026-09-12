@@ -6,6 +6,7 @@
 imports = [
   ./hardware-configuration.nix
   ./disko.nix
+  ./snapshots.nix
 
   ../common/system/global
   ../common/system
@@ -29,8 +30,6 @@ networking.hostName = "tabosa";
 
 powerManagement.powertop.enable = true;
 
-boot.zfs.forceImportRoot = false; 
-
 hardware.bluetooth = {
   enable = true;
   powerOnBoot = true;
@@ -43,14 +42,5 @@ services.logind.settings.Login = {
   HandlePowerKeyLongPress = "poweroff";
 };
 
-services.zfs.autoSnapshot = {
-  enable = true;
-  weekly = 4;
-};
-
-services.zfs.trim.enable = true;
-
-networking.hostId = "1a2b3c4d";
-
-system.stateVersion = "25.05"; 
+system.stateVersion = "25.05";
 }

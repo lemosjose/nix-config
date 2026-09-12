@@ -33,6 +33,7 @@
     easyeffects
     awscli2
     terraform
+    gnome-calendar
     direnv
     nixfmt
     slack
