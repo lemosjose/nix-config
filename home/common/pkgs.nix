@@ -27,7 +27,6 @@
     tilix
     gnome-disk-utility
     gnome-system-monitor
-    code-cursor-fhs
     kiro-fhs
     slack
     obsidian
