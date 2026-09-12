@@ -51,7 +51,11 @@ hardware.cpu.amd = {
   ryzen-smu.enable = true;
 };
 
-environment.systemPackages = lib.mkAfter [ pkgs.lmstudio pkgs.opencode ]; 
+environment.systemPackages = lib.mkAfter [ pkgs.lmstudio pkgs.opencode ];
+
+systemd.tmpfiles.rules = [
+  "d /mnt/Learning 2775 lemos users -"
+];
 
 system.stateVersion = "25.05";
 }

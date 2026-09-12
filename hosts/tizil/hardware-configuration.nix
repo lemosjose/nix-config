@@ -13,9 +13,10 @@ boot.initrd.kernelModules = [ "dm-snapshot" ];
 boot.kernelModules = [ "kvm-amd" ];
 boot.extraModulePackages = [ ];
 
-fileSystems."/home/lemos/Learning" = 
-  { device = "/dev/disk/by-uuid/48f579b5-a9b7-46a2-a64d-353ba1580e13"; 
+fileSystems."/mnt/Learning" =
+  { device = "/dev/disk/by-uuid/48f579b5-a9b7-46a2-a64d-353ba1580e13";
     fsType = "ext4";
+    options = [ "x-gvfs-show" "nofail" ];
   };
 
 networking.useDHCP = lib.mkDefault true;
