@@ -26,6 +26,8 @@
     awscli2
     terraform
     gnome-calendar
+    zed-editor
+    telegram-desktop
     direnv
     nixfmt
     mlocate

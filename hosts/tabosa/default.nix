@@ -27,6 +27,10 @@ imports = [
   ../common/users/Joseph
 ];
 
+# 6.18.51/.52 die in initrd on this machine (ACPI errors, no LUKS prompt);
+# 6.18.49 works. Tracking mainline to stay ahead of that stable-series bug.
+boot.kernelPackages = pkgs.linuxPackages_latest;
+
 # Previously came from the retired hybrid.nix; kept so 32-bit GL (Steam,
 # wine) keeps working on the iGPU.
 hardware.graphics = {
