@@ -10,7 +10,6 @@
     pavucontrol
     papers
     zotero
-    antigravity-fhs
     dbeaver-bin
     pyright
     wl-clipboard
@@ -29,7 +28,10 @@
     zed-editor
     telegram-desktop
     direnv
+    apache-airflow
+    mcp-nixos
     nixfmt
+    codegraph
     mlocate
     gh
     obs-studio

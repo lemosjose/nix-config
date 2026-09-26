@@ -1,4 +1,4 @@
-#flakes don't track files that are not added in git 
+#flakes don't track files that are not added in git
 
 #emacs.gitignore
 
@@ -10,3 +10,4 @@
 *#
 .#*
 .claude/
+.codegraph/

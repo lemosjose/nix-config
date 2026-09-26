@@ -26,7 +26,6 @@ home = {
     google-chrome
     awscli2
     google-cloud-sdk-gce
-    zed-editor
   ];
 };
 
