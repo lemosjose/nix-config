@@ -12,7 +12,12 @@
     cosmic-player
     cosmic-wallpapers
     cosmic-term
+    cosmic-store
   ];
-  
+
+  environment.systemPackages = with pkgs; [
+    cosmic-viewer
+  ];
+
   services.desktopManager.cosmic.enable = true;
 }

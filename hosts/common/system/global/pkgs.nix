@@ -20,8 +20,8 @@ environment.systemPackages = with pkgs; [
   jdk21
   neovim
   which
-  rPackages.pkgconfig 
-  cairo 
+  rPackages.pkgconfig
+  cairo
   android-tools
   basedpyright
   brightnessctl
@@ -29,7 +29,7 @@ environment.systemPackages = with pkgs; [
   dnsutils
   alacritty
   ntfs3g
-  nixd 
+  nixd
   uv
   kiro-cli
 ];

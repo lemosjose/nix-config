@@ -1,7 +1,7 @@
 {
   pkgs,
   inputs,
-  lib, 
+  lib,
   ...
 }: {
 imports = [
@@ -10,7 +10,7 @@ imports = [
   inputs.hardware.nixosModules.common-pc-ssd
 
   ./hardware-configuration.nix
-  ./disko.nix 
+  ./disko.nix
 
   ../common/system/global
 
@@ -18,18 +18,20 @@ imports = [
 
   ../common/system/misc/ollama.nix
   ../common/system/misc/podman.nix
-  ../common/system/misc/gnome.nix
+  ../common/system/misc/cosmic.nix
 
   ../common/users/lemos
   ../common/users/Joseph
 
   ./gaming
-  
+
 ];
 
 services.xserver.videoDrivers = [ "amdgpu" ];
 
 boot = {
+  kernelPackages = pkgs.linuxPackages_latest;
+
   kernelParams = [
 	  "quiet"
 	  "splash"
@@ -38,7 +40,7 @@ boot = {
   initrd.kernelModules = [ "amdgpu" ];
 };
 
-networking.networkmanager.wifi.powersave = false; 
+networking.networkmanager.wifi.powersave = false;
 
 virtualisation.waydroid.enable = true;
 
