@@ -9,7 +9,6 @@
     vlc
     pavucontrol
     papers
-    zotero
     dbeaver-bin
     pyright
     wl-clipboard
@@ -26,7 +25,6 @@
     terraform
     gnome-calendar
     zed-editor
-    telegram-desktop
     direnv
     apache-airflow
     mcp-nixos
