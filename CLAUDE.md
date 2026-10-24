@@ -52,7 +52,7 @@ There is no test suite, linter, or CI in this repo — validation is `nixos-rebu
 ### Composition pattern
 Each host's `hosts/<host>/default.nix` is a thin composition root: it imports hardware-specific files (`hardware-configuration.nix`, `disko.nix`), shared system modules, and the users that should exist on that host. Nearly all real configuration lives in the shared modules under `hosts/common/`, not in the host files themselves.
 
-- `hosts/common/system/global/` — modules imported by **every** NixOS host unconditionally (boot, flatpak, fonts, hardware, network, pkgs, programs, services, xdg), wired together via `hosts/common/system/global/default.nix`.
+- `hosts/common/system/global/` — modules imported by **every** NixOS host unconditionally (boot, flatpak, fonts, hardware, network, overrides, pkgs, programs, services, xdg), wired together via `hosts/common/system/global/default.nix`.
 - `hosts/common/system/` (top-level `default.nix`) — cross-host baseline: enables the home-manager NixOS module (`useGlobalPkgs`/`useUserPackages`), raises `nofile` limits for `@wheel`, enables flakes, sets `vm.swappiness`.
 - `hosts/common/system/misc/` — **optional** modules (cosmic, gnome, plasma, ollama, podman, hybridGPU) that hosts opt into individually via their own import list — not auto-included.
 - `hosts/common/users/<user>/default.nix` — defines the NixOS user account (groups, subuid/subgid ranges, hashed password) and wires `home-manager.users.<user>` to `home/<user>/${config.networking.hostName}.nix`. This means **each user's home-manager config file is selected dynamically by hostname** — adding a user to a new host requires creating `home/<user>/<hostname>.nix`.
@@ -60,6 +60,13 @@ Each host's `hosts/<host>/default.nix` is a thin composition root: it imports ha
 
 ### Home-manager side
 `home/common/` holds modules shared across all users/hosts (firefox, git, pkgs, vscode, zsh), imported via `home/common/default.nix`. Per-user, per-host files (e.g. `home/Joseph/tizil.nix`, `home/lemos/tabosa.nix`) layer host-specific home-manager config (e.g. `home/common/tabosa/{gnome,plasma}.nix`, `home/common/tizil/{default,gnome-extra}.nix`) on top of the shared common modules.
+
+### Upstream breakage
+Because `nixpkgs` tracks `nixos-unstable` and `flake.lock` floats, a package that breaks upstream breaks every host at once. Workarounds live in one place: `hosts/common/system/global/overrides.nix`. Add a package with a failing test suite to its `pythonTestSkips` or `testSkips` list — do not scatter one-off overlays across host files. Note the date and what broke, and delete the entry once nixpkgs recovers; these are meant to be temporary. Anything needing more than `doCheck = false` gets its own overlay in that same file.
+
+Two gotchas: the names in those lists must be literal strings, because deriving attribute names from `prev` inside `pythonPackagesExtensions` hits infinite recursion (`python-packages.nix` is `self: super: with self;`); and an override changes the package's hash, so it and everything downstream lose binary-cache hits. Check the blast radius with `nix build --dry-run` before committing to one.
+
+To find what pulls a broken package in, use `nix why-depends --derivation .#nixosConfigurations.<host>.config.system.build.toplevel /nix/store/<drv>`.
 
 ### Disk layout
 Disko (`hosts/<host>/disko.nix`) is the current approach for all three NixOS hosts. tizil uses an LVM volume group (`sspx`) on top of a GPT/ESP layout; zfs was removed from active use (see `backup/zfs.nix` / `backup/btrfs.nix`, kept only as reference, not imported anywhere).

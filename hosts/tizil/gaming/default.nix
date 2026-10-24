@@ -12,6 +12,7 @@ specialisation = {
     configuration = {
 
       boot.plymouth.enable = true;
+      boot.kernelPackages = pkgs.linuxPackages_latest;
 
       system.stateVersion = "25.11";
       
